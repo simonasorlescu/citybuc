@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425104705) do
+ActiveRecord::Schema.define(:version => 20130425122808) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,6 +50,38 @@ ActiveRecord::Schema.define(:version => 20130425104705) do
     t.string   "name"
     t.string   "description"
     t.integer  "parent_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "url"
+    t.datetime "date"
+    t.integer  "location_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.text     "description"
+    t.string   "url"
+    t.decimal  "latitude",    :precision => 10, :scale => 6
+    t.decimal  "longitude",   :precision => 10, :scale => 6
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "rating"
+    t.integer  "user_id"
+    t.integer  "location_id"
+    t.integer  "event_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

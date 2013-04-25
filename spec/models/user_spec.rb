@@ -23,10 +23,10 @@ describe User do
 
 
 
-  # before do
- #    @user = User.new(name: "Example User", email: "user@example.com",
- #                   password: "foobar12", password_confirmation: "foobar12")
- #  end
+  before do
+    @user = User.new(name: "Example User", email: "user@example.com",
+                   password: "foobar12", password_confirmation: "foobar12")
+  end
 
   subject { @user }
 
