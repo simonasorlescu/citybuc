@@ -3,12 +3,12 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'mysql2'
 gem 'jquery-rails'
+gem 'devise'
+gem 'activeadmin'
 # gem 'bootstrap-sass'
 # gem 'bcrypt-ruby'
 # gem 'will_paginate'
 # gem 'bootstrap-will_paginate'
-# gem 'devise'
-# gem 'activeadmin'
 # gem 'activevalidators'
 # gem 'omniauth'
 # gem 'omniauth-facebook'
@@ -25,7 +25,6 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'spork'
-  # gem 'factory_girl_rails'
 end
 
 group :development do
@@ -36,8 +35,9 @@ group :test do
   gem 'capybara'
   gem 'rb-inotify'
   gem 'libnotify'
+  gem 'factory_girl_rails'
+  gem 'faker'
   # gem 'cucumber-rails', require: false
-  # gem 'faker'
-  # gem 'database_cleaner', '0.7.0'
+  # gem 'database_cleaner'
   # gem 'launchy'
 end
