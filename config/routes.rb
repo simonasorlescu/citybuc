@@ -1,13 +1,24 @@
 Cityguide::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  devise_for :users
-  ActiveAdmin.routes(self)
+  root :to => 'home#index'
+
+  match "users/:user_id/subscriptions/:subscribed_to.json" => 'locations#subscribed_to' # subscribed_to: reviews, location
+  match "locations/:id/users" => 'users#index'
+  match 'users/:user_id/reviews' => 'reviews#index'
+
+  resources :users do
+    resources :subscriptions
+  end
+  resources :events, :locations do
+    resources :reviews, :media
+  end
+  resources :categories
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  root :to => 'home#index'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

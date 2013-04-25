@@ -58,5 +58,15 @@ module Cityguide
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.generators do |g|
+        g.test_framework :rspec,
+            :fixtures => true,  # specifies to generate a fixture for each model (using a Factory Girl factory, instead of an actual fixture)
+            :view_specs => false,   # says to skip generating view specs
+            :helper_specs => false, # skips generating specs for the helper files Rails generates with each controller
+            :routing_specs => true,
+            :controller_specs => true,
+            :request_specs => true
+    end
   end
 end
