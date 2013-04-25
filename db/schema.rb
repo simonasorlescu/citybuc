@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425122808) do
+ActiveRecord::Schema.define(:version => 20130425123818) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(:version => 20130425122808) do
     t.decimal  "longitude",   :precision => 10, :scale => 6
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "media", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "url"
+    t.integer  "mediable_id"
+    t.string   "mediable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "reviews", :force => true do |t|
