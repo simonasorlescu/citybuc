@@ -9,5 +9,4 @@ describe Category do
     build(:category, name: nil).should_not be_valid
   end
 
-  it {should respond_to(:locations)}
 end

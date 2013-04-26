@@ -15,12 +15,12 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, length: { maximum: 50 }
 
-  def getSubscriptions
+  def get_subscriptions
     # SELECT * FROM subscriptions WHERE user_id = 'whatever'
-    self.subscriptions
+    subscriptions
   end
 
-  def getSubscriptionsByCategory
+  def get_subscriptions_by_category
      # Fetches all category subscriptions for the current user.
      # The user can be subscribed to both categories and locations
      # and receives notifications of events coming from both of them.
@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     self.subscriptions.where("category_id IS NOT NULL").order("created_at DESC")
   end
 
-  def getSubscriptionsByLocation
+  def get_subscriptions_by_location
      # SELECT l.*
      # FROM locations l, users u, subscriptions s
      # WHERE u.id = #{}
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
     self.subscriptions.where("location_id IS NOT NULL").order("created_at DESC")
   end
 
-  def getEventsBySubscription
+  def get_events_by_subscription
     # This function returns events.
     # Users are subscribed directly to locations.
     # This method returns the events produced by the locations to which the
@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
       .where("s.user_id = #{self.id}")
   end
 
-  def getUserReviews
+  def get_user_reviews
     self.reviews
   end
 

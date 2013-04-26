@@ -13,20 +13,21 @@ describe Review do
     build(:review, description: nil).should_not be_valid
   end
 
-  before do
-    @review = Review.new(title: "Example Review", description: "example description")
+  describe "has rating" do
+    before { @review = create :review }
+
+    it "is nil by default" do
+      @review.rating.should == nil
+    end
+
+    it "is valid between 0 and 5" do
+      @review.rating = 3
+      @review.should be_valid
+    end
+
+    it "is invalid below 0 or over 5" do
+      @review.rating = 70
+      @review.should be_invalid
+    end
   end
-
-  subject { @review }
-
-  describe "default rating is nil" do
-    it { @review.rating.should == nil }
-  end
-
-  describe "rating is between 0 and 5" do
-    before { @review.rating = 70 }
-    it { should be_invalid }
-  end
-
-
 end

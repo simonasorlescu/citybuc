@@ -16,7 +16,7 @@ class Location < ActiveRecord::Base
   validates :latitude, format: {with: LATITUDE}
   validates :longitude, format: {with: LONGITUDE}
 
-  def getAllUsersSubscribedToLocation
+  def get_all_users_subscribed_to_location
     # SELECT u.*
      # FROM locations c, users u, subscriptions s
      # WHERE l.id = #{}
@@ -27,12 +27,12 @@ class Location < ActiveRecord::Base
       .where("l.id = #{self.id}")
   end
 
-  def getLocationReviews
+  def get_location_reviews
     # SELECT * FROM reviews WHERE user_id = #{  }
     self.reviews
   end
 
-  def getAvgRating
+  def get_avg_rating
     self.reviews.average(:rating)
   end
 end

@@ -42,8 +42,8 @@ group :test do
   gem 'libnotify'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'database_cleaner'
   # gem 'cucumber-rails', require: false
-  # gem 'database_cleaner'
   # gem 'launchy'
 end
 
