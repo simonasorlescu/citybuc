@@ -6,14 +6,17 @@ class LocationsController < ApplicationController
 
   def subscribed_to
     user = User.find(params[:user_id])
+    p params
     if params[:subscribed_to] == 'locations'
-      loc = user.locations
-      respond_with(loc)
+      locations = user.locations
+      p locations
+      respond_with(locations)
       #loc = Location.find(params[:location_id])
       #subs = loc.subscriptions
     elsif params[:subscribed_to] == 'categories'
-      cat = user.categories
-      respond_with(cat)
+      categories = user.categories
+      p categories
+      respond_with(categories)
       #cat = Category.find(params[:category_id])
       #subs = cat.subscriptions
     end
@@ -21,7 +24,7 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-    @location["average rating"] = @location.getAvgRating.to_f
+    @location["average rating"] = @location.get_avg_rating.to_f
     respond_with(@location)
   end
 end

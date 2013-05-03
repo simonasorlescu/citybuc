@@ -30,7 +30,7 @@ describe Location do
   end
 
   it "is valid when longitude format is valid" do
-    build(:location, longitude: 144.456988).should be_valid
+    build(:location, longitude: -59.618631).should be_valid
   end
 
   it "is invalid when longitude format is invalid" do
@@ -64,6 +64,7 @@ describe Location do
       avg.should == 2.5
     end
   end
+
   # describe "when url format is invalid" do
   #   it "is invalid" do
   #     urls = %w[location,com location example.location@foo. foobar-com]

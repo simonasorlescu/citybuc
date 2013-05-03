@@ -43,8 +43,8 @@ group :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'launchy'
   # gem 'cucumber-rails', require: false
-  # gem 'launchy'
 end
 
 # To use Jbuilder templates for JSON

@@ -1,8 +1,23 @@
 class UsersController < ApplicationController
   def index
-    # @users = User.all
-    loc = Location.find(params[:id])
-    users = loc.getAllUsersSubscribedToLocation
+    @users = User.all
+  end
+
+  def users_subscribed_to_location
+    location = Location.find(params[:id])
+    users = location.get_all_users_subscribed_to_location
+    respond_with(users)
+  end
+
+  def users_subscribed_to_category
+    category = Category.find(params[:id])
+    users = category.get_all_users_subscribed_to_category
+    respond_with(users)
+  end
+
+  def users_subscribed_to_event
+    event = Event.find(params[:id])
+    users = event.get_all_users_subscribed_to_event
     respond_with(users)
   end
 

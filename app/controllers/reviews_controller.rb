@@ -5,15 +5,15 @@ class ReviewsController < ApplicationController
     if params[:event_id]
       p 'intra event'
       event = Event.find(params[:event_id])
-      reviews = event.getEventReviews
+      reviews = event.get_event_reviews
     elsif params[:location_id]
       p 'intra location'
-      loc = Location.find(params[:location_id])
-      reviews = loc.getLocationReviews
+      location = Location.find(params[:location_id])
+      reviews = location.get_location_reviews
     elsif params[:user_id]
       p 'intra user'
       user = User.find(params[:user_id])
-      reviews = user.getUserReviews
+      reviews = user.get_user_reviews
     end
     respond_with(reviews)
   end

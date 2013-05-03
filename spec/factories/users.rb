@@ -7,4 +7,8 @@ FactoryGirl.define do
     f.password "foobar12"
     f.password_confirmation "foobar12"
   end
+
+  factory :invalid_user, parent: :user do |f|
+    f.username nil
+  end
 end

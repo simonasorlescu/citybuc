@@ -6,7 +6,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @event["average rating"] = @event.getAvgRating.to_f
+    @event["average rating"] = @event.get_avg_rating.to_f
     respond_with(@event)
   end
 end

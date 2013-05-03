@@ -1,7 +1,7 @@
 class MediaController < ApplicationController
   def index
     event = Event.find(params[:event_id])
-    media = event.getEventMedia
+    media = event.get_event_media
     respond_with(media)
   end
 

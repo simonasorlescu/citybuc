@@ -5,7 +5,7 @@ FactoryGirl.define do
     f.name { Faker::Name.title }
     f.address { Faker::Address.street_address }
     f.url { Faker::Internet.url }
-    f.latitude { Faker::Address.latitude }
-    f.longitude { Faker::Address.longitude }
+    f.latitude { Faker::Address.latitude.to_f.round(6) }
+    f.longitude { Faker::Address.longitude.to_f.round(6) }
   end
 end

@@ -5,8 +5,10 @@ Cityguide::Application.routes.draw do
 
   root :to => 'home#index'
 
-  match "users/:user_id/subscriptions/:subscribed_to.json" => 'locations#subscribed_to' # subscribed_to: reviews, location
-  match "locations/:id/users" => 'users#index'
+  match "users/:user_id/subscriptions/:subscribed_to" => 'locations#subscribed_to' # subscribed_to: reviews, location
+  match "locations/:id/users" => 'users#users_subscribed_to_location'
+  match "events/:id/users" => 'users#users_subscribed_to_event'
+  match "categories/:id/users" => 'users#users_subscribed_to_category'
   match 'users/:user_id/reviews' => 'reviews#index'
 
   resources :users do
