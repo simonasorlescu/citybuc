@@ -6,18 +6,19 @@ Cityguide::Application.routes.draw do
   root :to => 'home#index'
 
   match "users/:user_id/subscriptions/:subscribed_to" => 'locations#subscribed_to' # subscribed_to: reviews, location
+  # match 'users/:user_id/subscriptions' => 'subscriptions#create', via: :post
+
   match "locations/:id/users" => 'users#users_subscribed_to_location'
   match "events/:id/users" => 'users#users_subscribed_to_event'
   match "categories/:id/users" => 'users#users_subscribed_to_category'
-  match 'users/:user_id/reviews' => 'reviews#index'
 
-  resources :users do
-    resources :subscriptions
+  resources :users, defaults: {format: :json} do
+    resources :subscriptions, :reviews, defaults: {format: :json}
   end
-  resources :events, :locations do
-    resources :reviews, :media
+  resources :events, :locations, defaults: {format: :json} do
+    resources :reviews, :media, defaults: {format: :json}
   end
-  resources :categories
+  resources :categories, defaults: {format: :json}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

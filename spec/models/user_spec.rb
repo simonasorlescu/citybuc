@@ -18,7 +18,7 @@ describe User do
   end
 
   describe 'has subscriptions' do
-    before :each do
+    before do
       @user = create(:user)
       @location = create(:location)
       @category = create(:category)
@@ -61,6 +61,13 @@ describe User do
       review = create(:review, user_id: @user.id)
       reviews = @user.get_user_reviews
       reviews.should include review
+    end
+  end
+
+  after do
+    users = User.all
+    for user in users
+      user.destroy
     end
   end
 end

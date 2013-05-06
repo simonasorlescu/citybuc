@@ -1,12 +1,9 @@
 require 'spec_helper'
 
 describe EventsController do
-  before do
-    @event = create(:event)
-  end
-
   describe "GET index" do
     before do
+      @event = create(:event)
       get :index, format: :json
     end
 
@@ -15,18 +12,24 @@ describe EventsController do
     end
 
     it "assigns all events to @events" do
-      assigns(:events).should eq([@event])
+      assigns(:events).should eq [@event]
     end
 
     it "returns correct JSON" do
-      body = JSON.parse(response.body)
-      body.should include @event
-      body.should == assigns(:events).to_json
+      response.body.should == assigns(:events).to_json
+    end
+
+    after do
+      events = Event.all
+      for event in events
+        event.destroy
+      end
     end
   end
 
   describe "GET show" do
     before do
+      @event = create(:event)
       get :show, format: :json, id: @event
     end
 
@@ -38,13 +41,18 @@ describe EventsController do
       assigns(:event).should eq(@event)
     end
 
-    it "returns the correct event when correct id is passed" do
+    it "returns correct JSON" do
       body = JSON.parse(response.body)
       body["id"].should == @event.id
+      body["average_rating"].should == @event.average_rating
+      response.body.should == @event.to_json
     end
 
-    it "renders the correct JSON" do
-      body.should == @event.to_json
+    after do
+      events = Event.all
+      for event in events
+        event.destroy
+      end
     end
   end
 end

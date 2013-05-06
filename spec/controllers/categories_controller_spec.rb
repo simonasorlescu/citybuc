@@ -12,13 +12,18 @@ describe CategoriesController do
     end
 
     it "assigns all categories to @categories" do
-      assigns(:categories).should eq([@category])
+      assigns(:categories).should eq [@category]
     end
 
     it "returns correct JSON" do
-      body = JSON.parse(response.body)
-      body.should include @category
-      body.should == assigns(:categories).to_json
+      response.body.should == assigns(:categories).to_json
+    end
+
+    after do
+      categories = Category.all
+      for category in categories
+        category.destroy
+      end
     end
   end
 end
