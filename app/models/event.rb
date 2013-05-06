@@ -46,7 +46,13 @@ class Event < ActiveRecord::Base
     Event.where("date > ?", Time.now)
   end
 
-  def get_avg_rating
-    self.reviews.average(:rating)
+  def average_rating
+    self.reviews.average(:rating).to_f
+  end
+
+  def as_json(options={})
+    super((options||{}).merge({
+      methods: [:average_rating]
+    }))
   end
 end

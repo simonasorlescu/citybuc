@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  before_filter :authenticate_user!
+  # before_filter :authenticate_user!
 
   def index
     @subscriptions = Subscription.all
@@ -19,22 +19,17 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = Subscription.new(params[:subscription])
 
-    respond_to do |format|
-      if @subscription.save
-        format.json { render json: @subscription, status: :created, location: @subscription }
-      else
-        format.json { render json: @subscription.errors, status: :unprocessable_entity }
-      end
+    if @subscription.save
+      url = "/users/#{@subscription.user_id}/subscriptions/#{@subscription.id}"
+      respond_with(@subscription, status: :created, location: url)
+    else
+      respond_with(@subscription.errors, status: :unprocessable_entity)
     end
   end
 
   def destroy
     @subscription = Subscription.find(params[:id])
     @subscription.destroy
-
-    respond_to do |format|
-      # format.html { redirect_to subscriptions_url }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 end

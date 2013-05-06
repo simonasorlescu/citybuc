@@ -73,7 +73,7 @@ describe Event do
     it 'lets me get average rating for event' do
       rev1 = create(:review, rating:2, event_id: @event.id)
       rev2 = create(:review, rating:3, event_id: @event.id)
-      avg = @event.get_avg_rating
+      avg = @event.average_rating
       avg.should == 2.5
     end
 

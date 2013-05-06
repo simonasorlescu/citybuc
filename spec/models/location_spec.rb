@@ -60,7 +60,7 @@ describe Location do
     it 'lets me get average rating for location' do
       rev1 = create(:review, location_id: @location.id, rating: 2)
       rev2 = create(:review, location_id: @location.id, rating: 3)
-      avg = @location.get_avg_rating
+      avg = @location.average_rating
       avg.should == 2.5
     end
   end

@@ -32,7 +32,17 @@ class Location < ActiveRecord::Base
     self.reviews
   end
 
-  def get_avg_rating
-    self.reviews.average(:rating)
+  def get_location_media
+    self.media
+  end
+
+  def average_rating
+    self.reviews.average(:rating).to_f
+  end
+
+  def as_json(options={})
+    super((options||{}).merge({
+      methods: [:average_rating]
+    }))
   end
 end
