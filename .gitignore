@@ -22,3 +22,7 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 .project
+
+# Remove node_modules and bower_components from git repo
+/angular/node_modules
+/angular/bower_components
