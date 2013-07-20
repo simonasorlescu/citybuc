@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :description, :url, :location_id, :name, :date, :media
+  attr_accessible :description, :url, :location_id, :name, :date, :media, :picture
 
   has_many :reviews
   has_many :media, as: :mediable
