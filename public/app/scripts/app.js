@@ -10,25 +10,43 @@ var app = angular.module('eventsApp', ['eventsService'])
       // List event
       .when('/events/:id', {
         templateUrl: 'views/event.html',
-        // controller: 'index'
+        controller: 'EventCtrl'
       })
-      .when('/events/:id/reviews', {
-        templateUrl: 'views/event.html',
-        // controller: 'index'
+      .when('/events/:id/details', {
+        templateUrl: 'views/event-details.html',
+        controller: 'EventCtrl'
       })
-      .when('/events/:id/media', {
-        templateUrl: 'views/event.html',
-        // controller: 'index'
+      // .when('/categories', {
+      //   templateUrl: 'views/categories.html',
+      // })
+      .when('/categories/:id', {
+        templateUrl: 'views/categories.html',
+        controller: 'CategoriesCtrl'
       })
-      .when('/events/:id/users', {
-        templateUrl: 'views/event.html',
-        // controller: 'index'
+      .when('/categories/:id/events', {
+        templateUrl: 'views/category.html',
+        controller: 'CategoryCtrl'
       })
-      // .when('/locations', {
+      .when('/settings', {
+        templateUrl: 'views/settings.html'
+      })
+      .when('/location', {
+        templateUrl: 'views/location.html',
+        // controller: 'LocationCtrl'
+      })
+      // .when('/locations/:id', {
+      //   templateUrl: 'views/location.html',
+      //   controller: 'LocationCtrl'
+      // })
+      // .when('/events/:id/reviews', {
       //   templateUrl: 'views/event.html',
       //   // controller: 'index'
       // })
-      // .when('/locations/:id', {
+      // .when('/events/:id/media', {
+      //   templateUrl: 'views/event.html',
+      //   // controller: 'index'
+      // })
+      // .when('/events/:id/users', {
       //   templateUrl: 'views/event.html',
       //   // controller: 'index'
       // })
@@ -61,10 +79,6 @@ var app = angular.module('eventsApp', ['eventsService'])
       //   // controller: 'index'
       // })
       // .when('/users/:user_id/subscriptions/:subscribed_to', {
-      //   templateUrl: 'views/event.html',
-      //   // controller: 'index'
-      // })
-      // .when('/categories', {
       //   templateUrl: 'views/event.html',
       //   // controller: 'index'
       // })

@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
   has_many :reviews
   has_many :media, as: :mediable
   belongs_to :location
+  has_and_belongs_to_many :categories
 
   validates_presence_of :name, :description
   validates :url, url: true
@@ -19,6 +20,17 @@ class Event < ActiveRecord::Base
 
   def get_events_by_location(location_id)
     Event.where("location_id = #{location_id}").order("created_at DESC")
+  end
+
+  def self.get_events_with_locations
+    Event.joins('INNER JOIN locations l ON l.id = events.location_id').select("events.*, l.address")
+  end
+
+  def self.get_event_with_location(event_id)
+    events = Event.joins('INNER JOIN locations l ON l.id = events.location_id')
+      .select("events.*, l.address")
+      .where("events.id = #{event_id}")
+    events[0]
   end
 
   def get_event_reviews

@@ -5,6 +5,7 @@ class Category < ActiveRecord::Base
 
   has_many :subscriptions
   has_and_belongs_to_many :locations
+  has_and_belongs_to_many :events
   has_many :subcategories, class_name: "Category", foreign_key: "parent_id"
 
   def get_all_users_subscribed_to_category

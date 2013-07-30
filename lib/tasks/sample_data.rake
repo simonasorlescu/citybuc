@@ -23,6 +23,7 @@ namespace :db do
 
     puts "Creating #{args[:count]} categories"
     categories = FactoryGirl.create_list(:category, args[:count].to_i)
+    FactoryGirl.create_list(:category, 2, :parent_id)
 
     puts "Creating #{args[:count]} users"
     users = FactoryGirl.create_list(:user, args[:count].to_i)

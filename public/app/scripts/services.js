@@ -1,24 +1,25 @@
 angular.module('eventsService', ['ngResource'])
   .factory('Events', function($resource) {
-    return $resource('/events.json', {}, {
-      index: { method: 'GET', isArray: true }
-    });
+    return $resource('/events.json');
+  })
+  .factory('CategoryEvents', function ($resource) {
+    return $resource('/categories/:id/events.json')
   })
   .factory('Event', function($resource) {
-    return $resource('/events/:event_id.json', {}, {
-      show: { method: 'GET', params:{event_id:'events'}, isArray:true }
-    });
+    return $resource('/events/:id.json');
   })
-  // .factory('Locations', function($resource) {
-  //   return $resource('/locations.json', {}, {
-  //     index: { method: 'GET', isArray: true }
-  //   });
-  // })
-  // .factory('Location', function($resource) {
-  //   return $resource('/locations/:location_id.json', {}, {
-  //     show: { method: 'GET', params:{location_id:'locations'}, isArray:true }
-  //   });
-  // })
+  .factory('Categories', function($resource) {
+    return $resource('/categories.json');
+  })
+  .factory('Category', function($resource) {
+    return $resource('/categories/:id.json');
+  })
+  .factory('Locations', function($resource) {
+    return $resource('/locations.json');
+  })
+  .factory('Location', function($resource) {
+    return $resource('/locations/:id.json');
+  })
   // .factory('Users', function($resource) {
   //   return $resource('/users.json', {}, {
   //     index: { method: 'GET', isArray: true }
@@ -30,11 +31,6 @@ angular.module('eventsService', ['ngResource'])
   //     show: { method: 'GET', params:{user_id:'users'}, isArray:true }
   //     update: { method: 'PUT' }
   //     destroy: { method: 'DELETE' }
-  //   });
-  // })
-  // .factory('Categories', function($resource) {
-  //   return $resource('/categories.json', {}, {
-  //     index: { method: 'GET', isArray: true }
   //   });
   // })
   // .factory('Media', function($resource) {

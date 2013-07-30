@@ -11,6 +11,7 @@ Cityguide::Application.routes.draw do
   match "locations/:id/users" => 'users#users_subscribed_to_location'
   match "events/:id/users" => 'users#users_subscribed_to_event'
   match "categories/:id/users" => 'users#users_subscribed_to_category'
+  match "categories/:id/events" => "events#events_by_category"
 
   resources :users, defaults: {format: :json} do
     resources :subscriptions, :reviews, defaults: {format: :json}

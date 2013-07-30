@@ -49,16 +49,23 @@ describe Event do
       users = @event.get_all_users_subscribed_to_event
       users.should include user
     end
+
+    it 'lets me get events with locations' do
+      events = Event.get_events_with_locations
+      p events
+      # foreach event in events:
+      #    assert.equals event.address, @location.addredd
+    end
   end
 
-    describe "has methods" do
-      before { @event = create(:event) }
+  describe "has methods" do
+    before { @event = create(:event) }
 
-      it "lets me get event reviews" do
-        review = create(:review, event_id: @event.id)
-        reviews = @event.get_event_reviews
-        reviews.should include review
-      end
+    it "lets me get event reviews" do
+      review = create(:review, event_id: @event.id)
+      reviews = @event.get_event_reviews
+      reviews.should include review
+    end
 
     it "lets me get event media" do
       img1 = create(:medium)
