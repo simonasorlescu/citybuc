@@ -10,7 +10,8 @@ class EventsController < ApplicationController
   end
 
   def events_by_category
-    @events = Event.get_events_by_category(params[:id])
+    @category = Category.find(params[:id])
+    @events = @category.events
     respond_with(@events)
   end
 end

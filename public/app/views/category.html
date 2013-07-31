@@ -4,67 +4,37 @@
   <h1>Event App</h1>
 </header>
 
-<div ng-include src="views/top-nav.html">
-</div>
+<nav id="top-nav">
+  <ul>
+    <li id="category"><a href="#/category"><img src="img/list-grey.png" alt="">Category</a></li>
+    <li id="friends"><a href=""><img src="img/friends-grey.png" alt="">Friends</a></li>
+    <li id="location"><a href="#/location.html"><img src="img/map-grey.png" alt="">Location</a></li>
+  </ul>
+</nav>
 
 <div id="container" ng-controller="CategoryCtrl">
-  <h2><img src="img/music.png" alt="">Music</h2>
-  <figure class="event">
-    <a href="event.html"><img src="img/event.jpg" alt="" /></a>
-    <figcaption>
-      <h1><a href="event.html">Super Concert TrupaCuInstrumente</a></h1>
-      <p>Friday, 23 Nov 2013</p>
-    </figcaption>
-    <section>
-      <p class="location"><img src="img/map-red.png" alt="">Bucharest</p>
-      <div class="followers">
-        <p>12 more</p>
-        <img src="img/homer.jpg" alt="">
-        <img src="img/homer.jpg" alt="">
-        <img src="img/homer.jpg" alt="">
-        <img src="img/homer.jpg" alt="">
-        <img src="img/homer.jpg" alt="">
-      </div>
-    </section>
-  </figure>
-
-  <figure class="event">
-    <a href="event.html"><img src="img/event.jpg" alt="" /></a>
-    <figcaption>
-      <h1><a href="event.html">Super Concert TrupaCuInstrumente</a></h1>
-      <p>Friday, 23 Nov 2013</p>
-    </figcaption>
-    <section>
-      <p class="location"><img src="img/map-red.png" alt="">Bucharest</p>
-      <div class="followers">
-        <p>12 more</p>
-        <img src="img/homer.jpg" alt="">
-        <img src="img/homer.jpg" alt="">
-        <img src="img/homer.jpg" alt="">
-        <img src="img/homer.jpg" alt="">
-        <img src="img/homer.jpg" alt="">
-      </div>
-    </section>
-  </figure>
-
-  <figure class="event">
-    <a href="event.html"><img src="img/event.jpg" alt="" /></a>
-    <figcaption>
-      <h1><a href="event.html">Super Concert TrupaCuInstrumente</a></h1>
-      <p>Friday, 23 Nov 2013</p>
-    </figcaption>
-    <section>
-      <p class="location"><img src="img/map-red.png" alt="">Bucharest</p>
-      <div class="followers">
-        <p>12 more</p>
-        <img src="img/homer.jpg" alt="">
-        <img src="img/homer.jpg" alt="">
-        <img src="img/homer.jpg" alt="">
-        <img src="img/homer.jpg" alt="">
-        <img src="img/homer.jpg" alt="">
-      </div>
-    </section>
-  </figure>
+  <ul>
+    <li ng-repeat="event in events">
+      <figure class="event">
+        <a href="#/events/{{event.id}}"><img ng-src="{{event.picture}}" alt="" /></a>
+        <figcaption>
+          <h1><a href="#/events/{{event.id}}">{{event.name}}</a></h1>
+          <p>{{event.date | date:'EEEE, d MMM yyyy'}}</p>
+        </figcaption>
+        <section>
+          <p class="location"><img src="img/map-red.png" alt="">{{event.address}}</p>
+          <div class="followers">
+            <p>12 more</p>
+            <img src="img/homer.jpg" alt="">
+            <img src="img/homer.jpg" alt="">
+            <img src="img/homer.jpg" alt="">
+            <img src="img/homer.jpg" alt="">
+            <img src="img/homer.jpg" alt="">
+          </div>
+        </section>
+      </figure>
+    </li>
+  </ul>
 </div>
 
 <nav class="bottom-nav">

@@ -55,4 +55,17 @@ describe EventsController do
       end
     end
   end
+
+  describe 'GET events by category' do
+    it 'lets me get events by category' do
+      cat1 = create(:category)
+      cat2 = create(:category)
+      event1 = create(:event)
+      event2 = create(:event)
+      cat1.events<<event1
+      cat2.events<<event2
+      cat1.events.should include event1
+      cat2.events.should_not include event1
+    end
+  end
 end

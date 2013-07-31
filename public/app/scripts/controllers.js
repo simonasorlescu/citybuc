@@ -48,8 +48,8 @@ function CategoriesCtrl ($scope, $routeParams, $location, Categories) {
   });
 }
 
-function CategoryCtrl($scope, $routeParams, Category) {
-  $scope.category = CategoryEvents.get({
+function CategoryCtrl($scope, $routeParams, CategoryEvents) {
+  $scope.events = CategoryEvents.query({
     id: $routeParams.id
   });
 }

@@ -1,4 +1,4 @@
-var app = angular.module('eventsApp', ['eventsService'])
+var eventsApp = angular.module('eventsApp', ['eventsService'])
   .config(function($routeProvider){
     // Configure the routes
     $routeProvider
@@ -16,9 +16,6 @@ var app = angular.module('eventsApp', ['eventsService'])
         templateUrl: 'views/event-details.html',
         controller: 'EventCtrl'
       })
-      // .when('/categories', {
-      //   templateUrl: 'views/categories.html',
-      // })
       .when('/categories/:id', {
         templateUrl: 'views/categories.html',
         controller: 'CategoriesCtrl'
@@ -87,6 +84,7 @@ var app = angular.module('eventsApp', ['eventsService'])
       //   // controller: 'index'
       // })
       .otherwise({
-        template: "This doesn't exist!"
+        // template: "This doesn't exist!"
+        redirectTo: '/'
       })
   });

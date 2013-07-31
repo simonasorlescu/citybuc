@@ -9,15 +9,6 @@ class Event < ActiveRecord::Base
   validates_presence_of :name, :description
   validates :url, url: true
 
-  def get_events_by_category(category_id)
-    # This method returns all events that belong to a certain category.
-    # @param {Integer} category_id - the id of the category where the returned events belong to.
-    Event.joins('INNER JOIN locations l ON l.id = events.location_id')
-      .joins('INNER JOIN categories_locations lc ON lc.location_id = l.id')
-      .joins('INNER JOIN categories c ON c.id = lc.category_id')
-      .where("c.id = #{category_id}")
-  end
-
   def get_events_by_location(location_id)
     Event.where("location_id = #{location_id}").order("created_at DESC")
   end

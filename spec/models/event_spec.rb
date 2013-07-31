@@ -32,17 +32,6 @@ describe Event do
       events.should include @event
     end
 
-    it 'lets me get events by category' do
-      cat1 = create(:category)
-      cat2 = create(:category)
-      cat1.locations << @location
-      cat1.locations.build
-      events1 = @event.get_events_by_category(cat1.id)
-      events2 = @event.get_events_by_category(cat2.id)
-      events1.should include @event
-      events2.should == []
-    end
-
     it 'lets me get all users subscribed to event' do
       user = create(:user)
       sub = Subscription.create(user_id: user.id, location_id: @location.id)
