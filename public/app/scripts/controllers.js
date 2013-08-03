@@ -46,12 +46,22 @@ function CategoriesCtrl ($scope, $routeParams, $location, Categories) {
       $scope.categories = topLevelCategories;
     }
   });
+  $scope.title = 'Categories';
 }
 
 function CategoryCtrl($scope, $routeParams, CategoryEvents) {
   $scope.events = CategoryEvents.query({
     id: $routeParams.id
   });
+}
+
+function HeaderCtrl ($scope) {
+  // if ()
+  $scope.title = 'Event App';
+}
+
+function TopNavCtrl ($scope) {
+  // if ()
 }
 
 // function LocationCtrl($scope, $routeParams, Location) {

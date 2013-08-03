@@ -14,10 +14,8 @@
       <!-- endbuild -->
 </head>
 <body>
-  <header>
-    <a href="#/settings.html"><img src="img/settings-22.png" alt=""></a>
-    <h1>Event App</h1>
-  </header>
+  <div ng-include="'views/header.html'" ng-controller='HeaderCtrl'></div>
+  <div ng-include="'views/top-nav.html'" ng-controller='TopNavCtrl'></div>
 
   <div ng-view></div>
 

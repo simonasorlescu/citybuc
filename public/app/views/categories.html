@@ -1,12 +1,12 @@
-<header>
+<!-- <header>
   <a href="index.html" class="btn tag">Back</a>
   <h1>Categories</h1>
-</header>
+</header> -->
 
 <ul id="categories" ng-controller="CategoriesCtrl">
   <li ng-repeat="category in categories">
     <img ng-src="img/popular.png" alt=""><a href="#/categories/{{category.id}}">{{category.name}}</a>
-    <span class="eye"><img src="img/eye.png" alt=""></span>
+    <span class="eye" ng-click=""><img src="img/eye.png" alt=""></span>
   </li>
 </ul>
 

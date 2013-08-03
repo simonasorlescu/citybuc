@@ -1,5 +1,6 @@
-var eventsApp = angular.module('eventsApp', ['eventsService'])
-  .config(function($routeProvider){
+var app = angular.module('eventsApp', ['eventsService']);
+
+app.config(function($routeProvider){
     // Configure the routes
     $routeProvider
       // List all events

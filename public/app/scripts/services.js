@@ -3,7 +3,7 @@ angular.module('eventsService', ['ngResource'])
     return $resource('/events.json');
   })
   .factory('CategoryEvents', function($resource) {
-    return $resource('/categories/:id/events.json');
+     return $resource('/categories/:id/events.json');
   })
   .factory('Event', function($resource) {
     return $resource('/events/:id.json');
@@ -12,7 +12,7 @@ angular.module('eventsService', ['ngResource'])
     return $resource('/categories.json');
   })
   .factory('Category', function($resource) {
-    return $resource('/categories/:id.json');
+    return $resource('/categories/:id/events.json');
   })
   .factory('Locations', function($resource) {
     return $resource('/locations.json');
