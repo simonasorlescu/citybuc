@@ -32,6 +32,9 @@ app.config(function($routeProvider){
         templateUrl: 'views/location.html',
         // controller: 'LocationCtrl'
       })
+      .when('/profile', {
+        templateUrl: 'views/profile.html'
+      })
       // .when('/locations/:id', {
       //   templateUrl: 'views/location.html',
       //   controller: 'LocationCtrl'

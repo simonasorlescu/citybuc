@@ -1,7 +1,17 @@
-<nav id="top-nav" ng-controller="TopNavCtrl">
-  <ul>
-    <li id="category"><a href="#/categories/"><img src="img/list-grey.png" alt="">Categories</a></li>
-    <li id="friends"><a href=""><img src="img/friends-grey.png" alt="">Friends</a></li>
-    <li id="location"><a href="#/location"><img src="img/map-grey.png" alt="">Location</a></li>
-  </ul>
-</nav>
+<div ng-controller="TopNavCtrl">
+  <header>
+    <a href="#/settings" ng-show="showSettings"><img src="img/settings-22.png" alt=""></a>
+    <a href="index.html" class="btn tag" ng-show="showBack">Back</a>
+    <a href="" ng-show="showGps"><img class="gps" src="img/location.png" alt=""></a>
+    <a href="index.html" class="btn btn-right" ng-show="showDone">Done</a>
+    <h1>{{title}}</h1>
+  </header>
+
+  <nav id="top-nav" ng-show="showSecondNav">
+    <ul>
+      <li id="category"><a href="#/categories/"><img src="img/list-grey.png" alt="">Categories</a></li>
+      <li id="friends"><a href=""><img src="img/friends-grey.png" alt="">Friends</a></li>
+      <li id="location"><a href="#/location"><img src="img/map-grey.png" alt="">Location</a></li>
+    </ul>
+  </nav>
+</div>

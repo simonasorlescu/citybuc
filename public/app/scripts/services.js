@@ -20,6 +20,9 @@ angular.module('eventsService', ['ngResource'])
   .factory('Location', function($resource) {
     return $resource('/locations/:id.json');
   })
+  // .factory('Profile', function($resource) {
+  //   return $resource('/profile.json');
+  // })
   // .factory('Users', function($resource) {
   //   return $resource('/users.json', {}, {
   //     index: { method: 'GET', isArray: true }

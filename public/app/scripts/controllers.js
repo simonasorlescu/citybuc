@@ -55,13 +55,111 @@ function CategoryCtrl($scope, $routeParams, CategoryEvents) {
   });
 }
 
-function HeaderCtrl ($scope) {
-  // if ()
-  $scope.title = 'Event App';
+function TopNavCtrl ($scope, $location) {
+  $scope.$on('$routeChangeStart', function () {
+
+    // switch($location.path()) {
+    //   case '/':
+    //     $scope.title = 'Event App';
+    //     $scope.showSettings = true;
+    //     $scope.showSecondNav = true;
+    //     break;
+    //   case '/events/'+'/\d/':
+    //     $scope.title = 'Event App';
+    //     $scope.showBack = true;
+    //     $scope.showSettings = false;
+    //     $scope.showSecondNav = false;
+    //     break;
+    //   case '/categories/'+category.id:
+    //     $scope.title = 'Categories';
+    //     $scope.showBack = true;
+    //     $scope.showSettings = false;
+    //     $scope.showSecondNav = false;
+    //     break;
+    //   case '/categories/'+'/events':
+    //     $scope.title = 'Categories';
+    //     $scope.showBack = true;
+    //     $scope.showSettings = false;
+    //     $scope.showSecondNav = false;
+    //     break;
+    //   case '/location':
+    //     $scope.title = 'Location';
+    //     $scope.showGps = true;
+    //     $scope.showSettings = true;
+    //     $scope.showSecondNav = true;
+    //     break;
+    //   case '/settings':
+    //     $scope.title = 'Settings';
+    //     $scope.showDone = true;
+    //     $scope.showSettings = false;
+    //     $scope.showSecondNav = false;
+    //     break;
+    //   case '/profile':
+    //     $scope.title = 'My Profile';
+    //     $scope.showSettings = true;
+    //     $scope.showSecondNav = false;
+    //     break;
+    //   default:
+    //     $scope.title = 'Event App';
+    // }
+
+    if ($location.path() === '/') {
+        $scope.title = 'Event App';
+        $scope.showSettings = true;
+        $scope.showSecondNav = true;
+    }
+    else if ($location.path().match(/\/events\/\d+/gi)) {
+        $scope.title = 'Event';
+        $scope.showBack = true;
+        $scope.showSettings = false;
+        $scope.showSecondNav = false;
+    }
+    else if ($location.path().match(/\/categories\/\d+\/events/gi)) {
+        $scope.title = 'Categories';
+        $scope.showBack = true;
+        $scope.showSettings = false;
+        $scope.showSecondNav = true;
+    }
+    else if ($location.path().match(/\/categories\/\d*/gi)) {
+        $scope.title = 'Categories';
+        $scope.showBack = true;
+        $scope.showSettings = false;
+        $scope.showSecondNav = false;
+    }
+    else if ($location.path() === '/location') {
+        $scope.title = 'Location';
+        $scope.showGps = true;
+        $scope.showSettings = true;
+        $scope.showSecondNav = true;
+    }
+    else if ($location.path() === '/settings') {
+        $scope.title = 'Settings';
+        $scope.showDone = true;
+        $scope.showSettings = false;
+        $scope.showSecondNav = false;
+    }
+    else if ($location.path() === '/profile') {
+        $scope.title = 'My Profile';
+        $scope.showSettings = true;
+        $scope.showSecondNav = false;
+    }
+    else {
+        $scope.title = 'Event App';
+    }
+
+  });
 }
 
-function TopNavCtrl ($scope) {
-  // if ()
+function BottomNavCtrl ($scope, $location) {
+  $scope.$on('$routeChangeStart', function () {
+    switch($location.path()) {
+      case '/settings':
+        $scope.showNav = false;
+        break;
+      default:
+      $scope.showNav = true;
+    }
+  });
 }
 
 // function LocationCtrl($scope, $routeParams, Location) {
