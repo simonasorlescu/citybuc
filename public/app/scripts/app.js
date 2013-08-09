@@ -1,4 +1,4 @@
-var app = angular.module('eventsApp', ['eventsService']);
+var app = angular.module('eventsApp', ['eventsService', 'ngGeolocation']);
 
 app.config(function($routeProvider){
     // Configure the routes
@@ -30,7 +30,7 @@ app.config(function($routeProvider){
       })
       .when('/location', {
         templateUrl: 'views/location.html',
-        // controller: 'LocationCtrl'
+        controller: 'LocationCtrl'
       })
       .when('/profile', {
         templateUrl: 'views/profile.html'

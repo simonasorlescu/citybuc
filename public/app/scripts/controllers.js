@@ -57,52 +57,6 @@ function CategoryCtrl($scope, $routeParams, CategoryEvents) {
 
 function TopNavCtrl ($scope, $location) {
   $scope.$on('$routeChangeStart', function () {
-
-    // switch($location.path()) {
-    //   case '/':
-    //     $scope.title = 'Event App';
-    //     $scope.showSettings = true;
-    //     $scope.showSecondNav = true;
-    //     break;
-    //   case '/events/'+'/\d/':
-    //     $scope.title = 'Event App';
-    //     $scope.showBack = true;
-    //     $scope.showSettings = false;
-    //     $scope.showSecondNav = false;
-    //     break;
-    //   case '/categories/'+category.id:
-    //     $scope.title = 'Categories';
-    //     $scope.showBack = true;
-    //     $scope.showSettings = false;
-    //     $scope.showSecondNav = false;
-    //     break;
-    //   case '/categories/'+'/events':
-    //     $scope.title = 'Categories';
-    //     $scope.showBack = true;
-    //     $scope.showSettings = false;
-    //     $scope.showSecondNav = false;
-    //     break;
-    //   case '/location':
-    //     $scope.title = 'Location';
-    //     $scope.showGps = true;
-    //     $scope.showSettings = true;
-    //     $scope.showSecondNav = true;
-    //     break;
-    //   case '/settings':
-    //     $scope.title = 'Settings';
-    //     $scope.showDone = true;
-    //     $scope.showSettings = false;
-    //     $scope.showSecondNav = false;
-    //     break;
-    //   case '/profile':
-    //     $scope.title = 'My Profile';
-    //     $scope.showSettings = true;
-    //     $scope.showSecondNav = false;
-    //     break;
-    //   default:
-    //     $scope.title = 'Event App';
-    // }
-
     if ($location.path() === '/') {
         $scope.title = 'Event App';
         $scope.showSettings = true;
@@ -162,9 +116,9 @@ function BottomNavCtrl ($scope, $location) {
   });
 }
 
-// function LocationCtrl($scope, $routeParams, Location) {
-//   $scope.location = Location.query();
-// }
+function LocationCtrl($scope, $routeParams, Geolocation) {
+  $scope.location = Geolocation.position();
+}
 
 // function EventsCtrl($scope, $route, Events) {
 //   $scope.events = Events.index();

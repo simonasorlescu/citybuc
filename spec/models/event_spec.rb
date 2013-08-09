@@ -41,9 +41,26 @@ describe Event do
 
     it 'lets me get events with locations' do
       events = Event.get_events_with_locations
-      p events
-      # foreach event in events:
-      #    assert.equals event.address, @location.addredd
+    end
+
+    it 'lets me get event with location' do
+      event = Event.get_event_with_location(@event.id)
+    end
+
+    it 'lets me get events near location' do
+      # we're going to create:
+      # - 2 locations far apart from each other
+      # - 1 event for each location
+      # we're going to fetch the nearest location and make sure it doesn't return the 2nd one because it's too far
+      lat = 44.432799
+      lng = 26.103859
+      loc1 = create(:location, latitude:44.434423, longitude:26.102486)
+      loc2 = create(:location, latitude:44.433381, longitude:26.017599)
+      ev1 = create(:event, location: loc1)
+      ev2 = create(:event, location: loc2)
+      events = Event.get_events_near_location(lat, lng)
+      events.length.should == 1
+      events.should include ev1
     end
   end
 

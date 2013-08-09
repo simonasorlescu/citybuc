@@ -9,6 +9,7 @@ Cityguide::Application.routes.draw do
   # match 'users/:user_id/subscriptions' => 'subscriptions#create', via: :post
 
   match "locations/:id/users" => 'users#users_subscribed_to_location'
+  match "events/near" => 'events#events_near_location'
   match "events/:id/users" => 'users#users_subscribed_to_event'
   match "categories/:id/users" => 'users#users_subscribed_to_category'
   match "categories/:id/events" => "events#events_by_category"

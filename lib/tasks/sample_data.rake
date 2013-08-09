@@ -10,7 +10,17 @@ namespace :db do
     Rake::Task['db:reset'].invoke
 
     puts "Creating 10 locations"
-    locations = FactoryGirl.create_list(:location, 10)
+    location1 = FactoryGirl.create(:location, latitude: 44.41213, longitude: 26.165925)
+    location2 = FactoryGirl.create(:location, latitude: 44.417475, longitude: 26.165271)
+    location3 = FactoryGirl.create(:location, latitude: 44.415731, longitude: 26.164327)
+    location4 = FactoryGirl.create(:location, latitude: 44.414731, longitude: 26.161478)
+    location5 = FactoryGirl.create(:location, latitude: 44.413544, longitude: 26.160395)
+    location6 = FactoryGirl.create(:location, latitude: 44.427881, longitude: 26.105833)
+    location7 = FactoryGirl.create(:location, latitude: 44.42562, longitude: 26.103655)
+    location8 = FactoryGirl.create(:location, latitude: 44.429367, longitude: 26.102148)
+    location9 = FactoryGirl.create(:location, latitude: 44.434132, longitude: 26.021526)
+    location10 = FactoryGirl.create(:location, latitude: 44.434937, longitude: 26.019809)
+    locations = [location1, location2, location3, location4, location5, location6, location7, location8, location9, location10]
 
     puts "Creating events for these locations and media for all"
     events = []

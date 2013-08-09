@@ -14,14 +14,26 @@ class Event < ActiveRecord::Base
   end
 
   def self.get_events_with_locations
-    Event.joins('INNER JOIN locations l ON l.id = events.location_id').select("events.*, l.address")
+    Event.joins('INNER JOIN locations l ON l.id = events.location_id')
+         .select("events.*, l.address")
   end
 
   def self.get_event_with_location(event_id)
     events = Event.joins('INNER JOIN locations l ON l.id = events.location_id')
-      .select("events.*, l.address")
-      .where("events.id = #{event_id}")
+                  .select("events.*, l.address")
+                  .where("events.id = #{event_id}")
     events[0]
+  end
+
+  def self.get_events_near_location(latitude, longitude, range=1)
+    kilometers = 6371
+    miles = 3959
+    Event.joins('INNER JOIN locations l ON l.id = events.location_id')
+         .select("events.*, (#{kilometers} * acos(cos(radians(#{latitude})) * cos(radians(latitude)) * cos(radians(longitude) - radians(#{longitude})) + sin(radians(#{latitude})) * sin(radians(latitude)))) AS distance")
+         .having("distance < #{range}")
+         .order('distance')
+         .limit(20)
+         .offset(0)
   end
 
   def get_event_reviews
@@ -40,9 +52,9 @@ class Event < ActiveRecord::Base
      # AND s.location_id = e.location_id
      # AND s.user_id = u.id
     User.joins('INNER JOIN subscriptions s ON s.user_id = users.id')
-      .joins('INNER JOIN locations l ON l.id = s.location_id')
-      .joins('INNER JOIN events e ON e.location_id = l.id')
-      .where("e.id = #{self.id}")
+        .joins('INNER JOIN locations l ON l.id = s.location_id')
+        .joins('INNER JOIN events e ON e.location_id = l.id')
+        .where("e.id = #{self.id}")
   end
 
   def get_new_events

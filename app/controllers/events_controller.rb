@@ -14,4 +14,9 @@ class EventsController < ApplicationController
     @events = @category.events
     respond_with(@events)
   end
+
+  def events_near_location
+   @events = Event.get_events_near_location(params["lat"],params["lng"],params["range"])
+    respond_with(@events)
+  end
 end
