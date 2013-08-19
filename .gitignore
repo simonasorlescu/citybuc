@@ -26,3 +26,4 @@ pickle-email-*.html
 # Remove node_modules and bower_components from git repo
 /public/node_modules
 /public/bower_components
+/.idea/*
